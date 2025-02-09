@@ -27,31 +27,33 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+function fetchJSONData(lang) {
+    var language = lang || "fr";
+            fetch('./assets/docs/content.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();  
+            })
+            .then(data => console.log(data[language]))  
+            .catch(error => console.error('Failed to fetch data:', error)); 
+    }
 window.addEventListener('DOMContentLoaded', event => {
 var french = true;
-            var el = document.getElementById("language");
-            console.log(el);
-            el.onclick = (
-                function () {
-                    if (french) {
-                        console.log("Passage en anglais");
-                        french = false;
-                    }else{
-                        console.log("Passage en français");
-                        french = true; 
-                    }
+        var el = document.getElementById("language");
+        console.log(el);
+        el.onclick = (
+            function () {
+                if (french) {
+                    console.log(fetchJSONData("en"));
+                    french = false;
+                }else{
+                    console.log(fetchJSONData("fr"));
+                    french = true; 
                 }
-            )
-            function fetchJSONData() {
-                fetch('../assets/docs/content.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();  
-                })
-                .then(data => console.log(data))  
-                .catch(error => console.error('Failed to fetch data:', error)); 
-        }
-        console.log(fetchJSONData());
-    });
+            }
+        )
+        
+    
+});
