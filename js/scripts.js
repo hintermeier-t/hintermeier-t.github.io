@@ -36,7 +36,7 @@ function fetchJSONData(lang) {
                 }
                 return response.json();  
             })
-            .then(data => console.log(data[language]))  
+            .then(data => console.log(data))  
             .catch(error => console.error('Failed to fetch data:', error)); 
     }
 window.addEventListener('DOMContentLoaded', event => {
