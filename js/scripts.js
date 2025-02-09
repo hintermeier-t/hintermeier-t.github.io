@@ -27,3 +27,31 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+window.addEventListener('DOMContentLoaded', event => {
+var french = true;
+            var el = document.getElementById("language");
+            console.log(el);
+            el.onclick = (
+                function () {
+                    if (french) {
+                        console.log("Passage en anglais");
+                        french = false;
+                    }else{
+                        console.log("Passage en français");
+                        french = true; 
+                    }
+                }
+            )
+            function fetchJSONData() {
+                fetch('../assets/docs/content.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();  
+                })
+                .then(data => console.log(data))  
+                .catch(error => console.error('Failed to fetch data:', error)); 
+        }
+        fetchJSONData();
+    });
