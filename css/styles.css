@@ -10933,7 +10933,7 @@ p.lead {
   margin-right: 0;
 }
 .social-icons .social-icon:hover {
-  background-color: #bd5d38;
+  background-color: var(--bs-primary);
 }
 
 .dev-icons {
@@ -10965,4 +10965,19 @@ section.resume-section .resume-section-content {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
+}
+
+@media(max-width: 720px){
+  ul.list-inline.dev-icons {
+    text-align: center;
+  }
+  li.list-inline-item > svg{
+    color : var(--bs-primary);
+  }
+}
+
+footer{
+  background-color: #343a40;
+  color: var(--bs-primary);
+  text-align: center;
 }
