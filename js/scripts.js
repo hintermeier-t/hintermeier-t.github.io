@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 function fetchJSONData(lang) {
     var language = lang || "fr";
-            fetch('./assets/docs/content.json')
+            fetch('../assets/docs/content.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
