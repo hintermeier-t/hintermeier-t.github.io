@@ -63,40 +63,40 @@
     
      
     </style>
-     <div class="mb-2"> English version ?</div>
-    <label class="switch">
+<li class="nav-item"><div class="d-inline my-auto align-middle nav-link">FR/EN</div>
+    <label class="switch d-inline">
 <input id="language" type="checkbox">
 <span class="slider round"></span>
-</label>
+</label></li>
 <script>
-    function fetchJSONData(lang) {
-        var language = lang || "fr";
-                fetch('./assets/docs/content.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    return response.json();  
-                })
-                .then(data => console.log(data[language]))  
-                .catch(error => console.error('Failed to fetch data:', error)); 
-        }
+function fetchJSONData(lang) {
+    var language = lang || "fr";
+            fetch('../assets/docs/content.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();  
+            })
+            .then(data => {return data[language]})  
+            .catch(error => console.error('Failed to fetch data:', error)); 
+    }
 window.addEventListener('DOMContentLoaded', event => {
 var french = true;
-            var el = document.getElementById("language");
-            console.log(el);
-            el.onclick = (
-                function () {
-                    if (french) {
-                        console.log(fetchJSONData("en"));
-                        french = false;
-                    }else{
-                        console.log(fetchJSONData("fr"));
-                        french = true; 
-                    }
+        var el = document.getElementById("language");
+        console.log(el);
+        el.onclick = (
+            function () {
+                if (french) {
+                    console.log(fetchJSONData("en"));
+                    french = false;
+                }else{
+                    console.log(fetchJSONData("fr"));
+                    french = true; 
                 }
-            )
-            
+            }
+        )
         
-    });
+    
+});
 </script>
