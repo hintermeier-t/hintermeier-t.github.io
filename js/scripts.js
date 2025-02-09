@@ -53,5 +53,5 @@ var french = true;
                 .then(data => console.log(data))  
                 .catch(error => console.error('Failed to fetch data:', error)); 
         }
-        fetchJSONData();
+        console.log(fetchJSONData());
     });
