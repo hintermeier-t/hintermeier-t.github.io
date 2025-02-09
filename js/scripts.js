@@ -1,4 +1,7 @@
-import en from '../assets/content.json';
+//
+// Scripts
+// 
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Activate Bootstrap scrollspy on the main nav element
@@ -25,8 +28,16 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 function fetchJSONData(lang) {
-    
-    console.log(en);
+    var language = lang || "fr";
+            fetch('../assets/docs/content.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();  
+            })
+            .then(data => console.log(data[language]))  
+            .catch(error => console.error('Failed to fetch data:', error)); 
     }
 window.addEventListener('DOMContentLoaded', event => {
 var french = true;
